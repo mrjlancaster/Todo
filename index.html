@@ -3,31 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Do List</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="https://kit.fontawesome.com/9cd23365e3.js" crossorigin="anonymous"></script>
+    <title>Todo App</title>
 </head>
 <body>
-    
-    <div class="container">
-        <div class="container_header">
-            <h1 class="title">Let's Do it List</h1>
+    <div class="input-container">
+        <div class="input-wrapper">
+            <input type="text" class="input">
+            <button class="add_item">+</button>
         </div>
-        <div class="input">
-            <input type="text" class="add_folders" placeholder="Add a folder..."><i class="fas fa-plus"></i>
-        </div>
-        <div class="folder-container">
-            <label> Folder<i class="fas fa-folder"></i></label>
-            <label> Folder<i class="fas fa-folder"></i></label>
-            <label> Folder<i class="fas fa-folder"></i></label>
-            <label> Folder<i class="fas fa-folder"></i></label>
-            <label> Folder<i class="fas fa-folder"></i></label>
-            <label> Folder<i class="fas fa-folder"></i></label>
-        </div>
+   
     </div>
 
-
-
-    <script src="main.js"></script>
+    <div class="output">
+        <div class="item">item goes here</div>
+        <button class="edit_item">Edit</button>
+        <button class="delete_item">Delete</button>
+    </div>
 </body>
 </html>
