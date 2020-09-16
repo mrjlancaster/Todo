@@ -24,9 +24,10 @@
   display: flex;
   flex-direction: column;
   /* background-color: #3498db; */
-  background-color: #ffff;
-  height: 50vh;
-  width: 40%;
+  /* background-color: #ffff; */
+  background-color: rgba(160, 194, 245, 0.904);
+  height: 500px;
+  width: 360px;
   border-radius: 8px;
   justify-content: space-evenly;
   align-items: center;
@@ -37,12 +38,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .login-title {
-  color: #3498db;
-  font-size: 45px;
+  /* color: #3498db; */
+  color: #ffff;
+  font-size: 40px;
   font-weight: 200;
 }
 
@@ -50,16 +51,17 @@
 .password_input-container {
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin: 8px 0;
   width: 60%;
 }
 
 .username-label,
 .password-label {
   margin-left: 5px;
-  color: #3498db;
+  /* color: #3498db; */
+  color: #ffff;
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 200;
 }
 
@@ -67,14 +69,7 @@
 .password-input {
   border: none;
   border-radius: 10px;
-  padding: 4px 8px;
+  padding: 5px 8px;
   outline: none;
-  background-color: lightblue;
-  color: #ffff;
+  background-color: rgb(227, 234, 255);
 }
-
-.username-input::placeholder,
-.password-input::placeholder {
-  color: rgb(226, 226, 226);
-}
-
