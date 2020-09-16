@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.showcase {
+  background-image: url('./img/login_background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login_form {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #3498db; */
+  background-color: #ffff;
+  height: 50vh;
+  width: 40%;
+  border-radius: 8px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login_inputs { 
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+.login-title {
+  color: #3498db;
+  font-size: 45px;
+  font-weight: 200;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.username_input-container,
+.password_input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 60%;
 }
+
+.username-label,
+.password-label {
+  margin-left: 5px;
+  color: #3498db;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.username-input,
+.password-input {
+  border: none;
+  border-radius: 10px;
+  padding: 4px 8px;
+  outline: none;
+  background-color: lightblue;
+  color: #ffff;
+}
+
+.username-input::placeholder,
+.password-input::placeholder {
+  color: rgb(226, 226, 226);
+}
+
