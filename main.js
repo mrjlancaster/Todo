@@ -19,3 +19,15 @@ addBtn.addEventListener('click', () => {
     // clear input field
     input.value = '';
 })
+
+
+
+// DELETE FUNCTION
+ul.addEventListener('click', (e) => {
+    console.log('ul working');
+    if (e.target.matches('li')) {
+        e.target.style.textDecoration = 'line-through';
+    }
+})
+
+
