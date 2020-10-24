@@ -11,7 +11,7 @@ addBtn.addEventListener('click', () => {
     let newItem = input.value;
 
     // add input value to an li
-    list += `<li>${newItem}</li>`;
+    list += `<li class="item">${newItem}</li>`;
 
     // add li with input value to ul
     ul.innerHTML = list;
