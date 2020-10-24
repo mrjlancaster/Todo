@@ -38,7 +38,13 @@ addBtn.addEventListener('click', () => {
 ul.addEventListener('click', (e) => {
     const item = e.target;
     if (item.matches('li')) {
-        item.style.textDecoration = 'line-through';
+    }
+
+    if (item.matches('i')) {
+        const parentEl = e.target.parentNode;
+        const li = parentEl.parentNode;
+        console.log(li);
+        li.style.textDecoration = 'line-through';
     }
 })
 
