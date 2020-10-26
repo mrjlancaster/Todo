@@ -11,9 +11,8 @@ addBtn.addEventListener('click', () => {
         return false;
     }
 
-
     // add new item function
-    function addItem() {
+    const addItem = () => {
         const li = document.createElement('li');
         const inputValue = input.value;
         li.classList.add('item');
@@ -23,7 +22,7 @@ addBtn.addEventListener('click', () => {
 
         // insert item to top of the list
         const firstItem = ul.firstChild;
-        ul.insertBefore(li, firstItem);
+        ul.insertBefore(li, firstItem);    
     }
 
     addItem();
@@ -43,11 +42,14 @@ ul.addEventListener('click', (e) => {
         const parentEl = e.target.parentNode;
         const li = parentEl.parentNode;
         li.remove();
-        // li.style.textDecoration = 'line-through';
     }
 })
 
 // CLEAR ALL
 deleteAllBtn.addEventListener('click', () => {
-    console.log('clear all button is working');
+    const list = document.querySelectorAll('.ul li');
+    for (let i = 0; li = list[i]; i++) {
+        li.parentNode.removeChild(li)
+        console.log(i);
+    }
 })
