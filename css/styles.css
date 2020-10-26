@@ -109,3 +109,7 @@ body {
 .hideClearBtn {
     display: none;
 }
+
+.hideClearAllButton {
+    display: none;
+}

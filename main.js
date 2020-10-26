@@ -1,14 +1,21 @@
 let input = document.querySelector('.input');
 const addBtn = document.querySelector('.addBtn');
 const ul = document.querySelector('.ul');
-const deleteAllBtn = document.querySelector('.clear_all-btn')
+const deleteAllBtn = document.querySelector('.clear_all-btn');
 
-let list = '';
-
+console.log(list);
 addBtn.addEventListener('click', () => {
     // if input value is empty, do nothing
     if (input.value === '') {
         return false;
+    }
+
+    if (list.length >= 0) {
+        deleteAllBtn.parentNode.style.display = 'block'
+        console.log('i have an item');
+
+    } else {
+        console.log('I do not have an item');
     }
 
     // add new item function
