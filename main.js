@@ -10,14 +10,6 @@ addBtn.addEventListener('click', () => {
         return false;
     }
 
-    if (list.length >= 0) {
-        deleteAllBtn.parentNode.style.display = 'block'
-        console.log('i have an item');
-
-    } else {
-        console.log('I do not have an item');
-    }
-
     // add new item function
     const addItem = () => {
         const li = document.createElement('li');
