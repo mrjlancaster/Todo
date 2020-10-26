@@ -76,17 +76,31 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* TRASH BUTTON */
-.trashBtn {
+
+/* ITEM ACTION BUTTONS */
+.trashBtn,
+.editBtn {
     background: none;
     border: none;
     outline: none;
     cursor: pointer;
 }
 
+.far.fa-edit {
+    font-size: 18px;
+    color: #3498db;
+}
+
 .far.fa-trash-alt {
     color: #e34736;
     font-size: 18px;
+}
+
+.editable-text {
+    border-radius: 4px;
+    padding: 0 5px;
+    border: none;
+    outline: none;
 }
 
 /* CLEAR ALL BUTTON */

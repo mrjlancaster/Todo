@@ -9,14 +9,20 @@ addBtn.addEventListener('click', () => {
         return false;
     }
 
-    // add new item function
+    // ADD ITEMS FUNCTION
     const addItem = () => {
-        const li = document.createElement('li');
         const inputValue = input.value;
+
+        // create new li tag
+        const li = document.createElement('li');
         li.classList.add('item');
 
-        li.innerHTML = `${inputValue}
-        <button class="trashBtn"><i class="far fa-trash-alt"></button>`;
+        const buttons = `<span><button class="editBtn"><i class="far fa-edit"></i></button>
+        <button class="trashBtn"><i class="far fa-trash-alt"></button></span>`
+
+        li.innerHTML = `<span class="item-text" contenteditable="false">${inputValue}</span> ${buttons}`;
+        console.log(li);
+
 
         // insert item to top of the list
         const firstItem = ul.firstChild;
@@ -33,13 +39,28 @@ addBtn.addEventListener('click', () => {
 // DELETE FUNCTION
 ul.addEventListener('click', (e) => {
     const item = e.target;
-    if (item.matches('li')) {
-    }
 
     if (item.matches('i')) {
-        const parentEl = e.target.parentNode;
-        const li = parentEl.parentNode;
-        li.remove();
+        if (item.className === 'far fa-trash-alt') {
+            const parentEl = e.target.parentNode;
+            const spanEl = parentEl.parentNode;
+            spanEl.parentNode.remove();
+        }
+
+        if (item.className === 'far fa-edit') {
+            const spanTag = document.getElementsByTagName('span');
+            const editableText = spanTag[0];
+            editableText.contentEditable = true;
+            editableText.classList.add('editable-text');
+            editableText.focus();
+
+            editableText.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    editableText.contentEditable = false;
+                    editableText.classList.remove('editable-text');
+                }
+            })    
+        }
     }
 })
 
