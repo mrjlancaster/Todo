@@ -21,8 +21,9 @@ addBtn.addEventListener('click', () => {
         li.innerHTML = `${inputValue}
         <button class="trashBtn"><i class="far fa-trash-alt"></button>`;
 
-        // insert item to list
-        ul.appendChild(li);
+        // insert item to top of the list
+        const firstItem = ul.firstChild;
+        ul.insertBefore(li, firstItem);
     }
 
     addItem();
@@ -48,6 +49,5 @@ ul.addEventListener('click', (e) => {
 
 // CLEAR ALL
 deleteAllBtn.addEventListener('click', () => {
-    ul.removeChild(ul);
     console.log('clear all button is working');
 })
