@@ -21,8 +21,6 @@ addBtn.addEventListener('click', () => {
         <button class="trashBtn"><i class="far fa-trash-alt"></button></span>`
 
         li.innerHTML = `<span class="item-text" contenteditable="false">${inputValue}</span> ${buttons}`;
-        console.log(li);
-
 
         // insert item to top of the list
         const firstItem = ul.firstChild;
@@ -69,6 +67,5 @@ deleteAllBtn.addEventListener('click', () => {
     const list = document.querySelectorAll('.ul li');
     for (let i = 0; li = list[i]; i++) {
         li.parentNode.removeChild(li)
-        console.log(i);
     }
 })
