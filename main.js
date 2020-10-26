@@ -3,7 +3,6 @@ const addBtn = document.querySelector('.addBtn');
 const ul = document.querySelector('.ul');
 const deleteAllBtn = document.querySelector('.clear_all-btn');
 
-console.log(list);
 addBtn.addEventListener('click', () => {
     // if input value is empty, do nothing
     if (input.value === '') {
