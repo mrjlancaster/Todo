@@ -4,7 +4,7 @@ const ul = document.querySelector('.ul');
 const deleteAllBtn = document.querySelector('.clear_all-btn');
 
 addBtn.addEventListener('click', () => {
-    // if input value is empty, do nothing
+    // If input value is empty, do nothing
     if (input.value === '') {
         return false;
     }
@@ -13,7 +13,6 @@ addBtn.addEventListener('click', () => {
     const addItem = () => {
         const inputValue = input.value;
 
-        // create new li tag
         const li = document.createElement('li');
         li.classList.add('item');
 
@@ -22,29 +21,31 @@ addBtn.addEventListener('click', () => {
 
         li.innerHTML = `<span class="item-text" contenteditable="false">${inputValue}</span> ${buttons}`;
 
-        // insert item to top of the list
+        // Insert new item to top of the list
         const firstItem = ul.firstChild;
         ul.insertBefore(li, firstItem);    
     }
 
-    addItem();
+    addItem(); // Call addItem funtion
 
-    // clear input field
+    // Clear input field
     input.value = '';
 })
 
 
-// DELETE FUNCTION
+// EDITING ITEMS FUNTION
 ul.addEventListener('click', (e) => {
     const item = e.target;
 
     if (item.matches('i')) {
+        // Delete item
         if (item.className === 'far fa-trash-alt') {
             const parentEl = e.target.parentNode;
             const spanEl = parentEl.parentNode;
             spanEl.parentNode.remove();
         }
 
+        // Edit item
         if (item.className === 'far fa-edit') {
             const spanTag = document.getElementsByTagName('span');
             const editableText = spanTag[0];
