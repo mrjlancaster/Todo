@@ -60,9 +60,6 @@ body {
     padding: 20px;
     margin-bottom: 10px;
     list-style: none;
-    /* background-color: #f1f2f6; */
-    /* min-height: 400px; */
-    /* border-radius: 2px; */
 }
 
 .item {
@@ -103,7 +100,6 @@ body {
 }
 
 /* CLEAR ALL BUTTON */
-
 .clear_all {
     align-self: center;
 }
