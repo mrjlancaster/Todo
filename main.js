@@ -4,7 +4,7 @@ const ul = document.querySelector('.ul');
 const deleteAllBtn = document.querySelector('.clear_all-btn');
 let todoList = [];
 
-
+// ADD BUTTON EVENT HANDLER
 addBtn.addEventListener('click', () => {
     // If input value is empty, do nothing
     const task = input.value;
@@ -15,6 +15,8 @@ addBtn.addEventListener('click', () => {
     addItem(task);
 })
 
+
+// ADD NEW ITEM TO TODO LIST AND LOCAL STORAGE
 const addItem = (item) => {
     // add item to array (list)
     todoList.push(item);
@@ -24,7 +26,7 @@ const addItem = (item) => {
     input.value = '';
 }
 
-// CREATING AND DISPLAYING LI ELEMENTS WITH DATA
+// HANDLING TODO ITEMS DISPLAY
 const displayTodos = (todos) => {
     ul.innerHTML = '';
 
@@ -76,9 +78,17 @@ ul.addEventListener('click', (e) => {
     }
 })
 
-// ADD DATA TO LOCAL STORAGE
+// ADDING DATA TO LOCAL STORAGE
 const addDataToLocalStorage = (todos) => {
     localStorage.setItem('todos', JSON.stringify(todos));
+    displayTodos(todoList);
+}
+
+// GET TODO LIST FROM LOCAL STORAGE FOR DISPLAY
+const getDataFromLocalStorage = () => {
+    const tasks = localStorage.getItem('todos');
+    todos = JSON.parse(tasks);
+
     displayTodos(todoList);
 }
 
@@ -96,12 +106,5 @@ deleteAllBtn.addEventListener('click', () => {
     }
 })
 
-// getting list from local storage
-const getDataFromLocalStorage = () => {
-    const tasks = localStorage.getItem('todos');
-    todos = JSON.parse(tasks);
-
-    displayTodos(todoList);
-}
 
 getDataFromLocalStorage();
