@@ -2,35 +2,48 @@ let input = document.querySelector('.input');
 const addBtn = document.querySelector('.addBtn');
 const ul = document.querySelector('.ul');
 const deleteAllBtn = document.querySelector('.clear_all-btn');
+let todoList = [];
+
 
 addBtn.addEventListener('click', () => {
     // If input value is empty, do nothing
-    if (input.value === '') {
+    const task = input.value;
+    if (task === '') {
         return false;
     }
 
-    // ADD ITEMS FUNCTION
-    const addItem = () => {
-        const inputValue = input.value;
+    addItem(task);
+})
 
+const addItem = (item) => {
+    // add item to array (list)
+    todoList.push(item);
+    addDataToLocalStorage(todoList);
+
+    // clear input field
+    input.value = '';
+}
+
+// CREATING AND DISPLAYING LI ELEMENTS WITH DATA
+const displayTodos = (todos) => {
+    ul.innerHTML = '';
+
+    todos.forEach(item => {
+        // create li element to add item
         const li = document.createElement('li');
+
+        // create class for li element
         li.classList.add('item');
 
+        // create action buttons
         const buttons = `<span><button class="editBtn"><i class="far fa-edit"></i></button>
         <button class="trashBtn"><i class="far fa-trash-alt"></button></span>`
 
-        li.innerHTML = `<span class="item-text" contenteditable="false">${inputValue}</span> ${buttons}`;
-
-        // Insert new item to top of the list
-        const firstItem = ul.firstChild;
-        ul.insertBefore(li, firstItem);    
-    }
-
-    addItem(); // Call addItem funtion
-
-    // Clear input field
-    input.value = '';
-})
+        li.innerHTML = `<span class="item-text" contenteditable="false">${item}</span> ${buttons}`;
+        firstItem = ul.firstChild;
+        ul.insertBefore(li, firstItem);
+    })
+}
 
 
 // EDITING ITEMS FUNTION
@@ -63,10 +76,32 @@ ul.addEventListener('click', (e) => {
     }
 })
 
+// ADD DATA TO LOCAL STORAGE
+const addDataToLocalStorage = (todos) => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+    displayTodos(todoList);
+}
+
 // CLEAR ALL
 deleteAllBtn.addEventListener('click', () => {
+    // clear local storage
+    localStorage.clear();
+
+    // clear todos
+    todoList = [];
+
     const list = document.querySelectorAll('.ul li');
     for (let i = 0; li = list[i]; i++) {
         li.parentNode.removeChild(li)
     }
 })
+
+// getting list from local storage
+const getDataFromLocalStorage = () => {
+    const tasks = localStorage.getItem('todos');
+    todos = JSON.parse(tasks);
+
+    displayTodos(todoList);
+}
+
+getDataFromLocalStorage();
