@@ -4,10 +4,6 @@ const ul = document.querySelector('.ul');
 const deleteAllBtn = document.querySelector('.clear_all-btn');
 let todoList = [];
 
-window.onbeforeunload = () => {
-    getDataFromLocalStorage();
-}
-
 // ADD BUTTON EVENT HANDLER
 addBtn.addEventListener('click', () => {
     // If input value is empty, do nothing
@@ -92,7 +88,6 @@ const addDataToLocalStorage = (todos) => {
 const getDataFromLocalStorage = () => {
     const tasks = localStorage.getItem('todos');
     todos = JSON.parse(tasks);
-
     displayTodos(todoList);
 }
 
@@ -110,3 +105,5 @@ deleteAllBtn.addEventListener('click', () => {
     }
 })
 
+
+getDataFromLocalStorage();
