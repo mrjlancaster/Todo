@@ -1,22 +1,22 @@
-let input = document.querySelector(".input");
+const input = document.querySelector(".input");
 const addBtn = document.querySelector(".addBtn");
 const ul = document.querySelector(".ul");
 const deleteAllBtn = document.querySelector(".clear_all-btn");
 let myTodos = [];
 
-function getTodos() {
-  const list = JSON.parse(localStorage.getItem("todos"));
+function listItemFactory(item) {
+  // const text = document.createTextNode(item.task);
+  const li = document.createElement("li");
+  li.setAttribute("id", item.id);
+  li.classList.add("item");
 
-  if (list == null) {
-    return;
-  } else {
-    myTodos = list;
-  }
-}
+  // create action buttons
+  const buttons = `<span><button class="editBtn"><i class="far fa-edit"></i></button>
+       <button class="trashBtn"><i id=${item.id} class="far fa-trash-alt"></button></span>`;
 
-function setTodos(list) {
-  myTodos = list;
-  localStorage.setItem("todos", JSON.stringify(list));
+  li.innerHTML = `<span id=${item.id} class="item-text" contenteditable="false">${item.task}</span> ${buttons}`;
+
+  return li;
 }
 
 function addTodo() {
@@ -29,36 +29,28 @@ function addTodo() {
     }
 
     const task = { id: myTodos.length + 1, task: inputValue };
+    const li = listItemFactory(task);
+
+    ul.appendChild(li);
     myTodos.push(task);
-    localStorage.setItem("todos", JSON.stringify(myTodos));
     input.value = "";
   });
 }
 
 function deleteItem(id) {
-  const newTodo = myTodos.filter((item) => item.id !== Number(id));
-  setTodos(newTodo);
+  const newTodos = myTodos.filter((item) => item.id !== Number(id));
+  const todoItems = document.querySelectorAll(".item");
+
+  for (let i = 0; i < todoItems.length; i++) {
+    const node = todoItems[i];
+
+    if (node.id === id) {
+      ul.removeChild(node);
+    }
+  }
+
+  myTodos = newTodos;
 }
-
-// HANDLING TODO ITEMS DISPLAY
-const displayTodos = (todos) => {
-  todos.forEach((item) => {
-    // create li element to add item
-    const li = document.createElement("li");
-    li.setAttribute("id", item.id);
-
-    // create class for li element
-    li.classList.add("item");
-
-    // create action buttons
-    const buttons = `<span><button class="editBtn"><i class="far fa-edit"></i></button>
-        <button class="trashBtn"><i id=${item.id} class="far fa-trash-alt"></button></span>`;
-
-    li.innerHTML = `<span id=${item.id} class="item-text" contenteditable="false">${item.task}</span> ${buttons}`;
-    firstItem = ul.firstChild;
-    ul.insertBefore(li, firstItem);
-  });
-};
 
 // Handle editing and deletings tasks
 function handleEditAndDeleteItem() {
@@ -97,7 +89,7 @@ function clearList() {
   deleteAllBtn.addEventListener("click", () => {
     if (myTodos.length) {
       localStorage.clear();
-      myTodos = [];
+      myTodos.length = 0;
 
       const list = document.querySelectorAll(".ul li");
       for (let i = 0; (li = list[i]); i++) {
@@ -107,8 +99,6 @@ function clearList() {
   });
 }
 
-getTodos();
 addTodo();
-displayTodos(myTodos);
 handleEditAndDeleteItem();
 clearList();
