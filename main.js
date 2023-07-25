@@ -11,7 +11,7 @@ function listItemFactory(item) {
   li.classList.add("item");
 
   // create action buttons
-  const buttons = `<span><button class="editBtn"><i class="far fa-edit"></i></button>
+  const buttons = `<span><button class="editBtn"><i id=${item.id} class="far fa-edit"></i></button>
        <button class="trashBtn"><i id=${item.id} class="far fa-trash-alt"></button></span>`;
 
   li.innerHTML = `<span id=${item.id} class="item-text" contenteditable="false">${item.task}</span> ${buttons}`;
@@ -61,25 +61,29 @@ function handleEditAndDeleteItem() {
       // Delete item
       if (item.className === "far fa-trash-alt") {
         deleteItem(item.id);
-        // const parentEl = e.target.parentNode;
-        // const spanEl = parentEl.parentNode;
-        // spanEl.parentNode.remove();
       }
 
       // Edit item
       if (item.className === "far fa-edit") {
-        const spanTag = document.getElementsByTagName("span");
-        const editableText = spanTag[0];
-        editableText.contentEditable = true;
-        editableText.classList.add("editable-text");
-        editableText.focus();
+        const listItems = ul.childNodes;
 
-        editableText.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            editableText.contentEditable = false;
-            editableText.classList.remove("editable-text");
+        for (let i = 0; i < listItems.length; i++) {
+          const li = listItems[i];
+
+          if (li.id === item.id) {
+            const editableTag = li.childNodes[0];
+            editableTag.contentEditable = true;
+            editableTag.classList.add("editable-text");
+            editableTag.focus();
+
+            editableTag.addEventListener("keydown", (e) => {
+              if (e.key === "Enter") {
+                editableTag.contentEditable = false;
+                editableTag.classList.remove("editable-text");
+              }
+            });
           }
-        });
+        }
       }
     }
   });
